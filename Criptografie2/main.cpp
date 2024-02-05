@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 
@@ -244,31 +244,61 @@ public:
 
 
 int main() {
-    string key = "word";
-    string secondKey = "seca";
-	LinkedList list;
-	list.insertNode("Dan");
-	list.insertNode("Iulica");
-	list.insertNode("Tolea");
-	list.insertNode("Shefciuc");
-	list.display();
-	cout << endl;
+    LinkedList list;
+    int choice, index;
+    string text, key;
 
-	list.applyVigenereCipher(1,key);
-    list.display();
-    cout << endl;
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Insert Node\n";
+        cout << "2. Apply Vigenere Cipher\n";
+        cout << "3. Decrypt Vigenere Cipher\n";
+        cout << "4. Apply Vernam Cipher\n";
+        cout << "5. Decrypt Vernam Cipher\n";
+        cout << "6. Display List\n";
+        cout << "7. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-    list.applyVernamCipher(1, secondKey);
-    list.display();
-	cout << endl;
+        switch (choice) {
+        case 1:
+            cout << "Enter text for new node: ";
+            cin.ignore(); // Ignore newline from previous input
+            getline(cin, text); // Use getline to allow spaces in input
+            list.insertNode(text);
+            break;
+        case 2:
+            cout << "Enter node index and key for Vigenere Cipher: ";
+            cin >> index >> key;
+            list.applyVigenereCipher(index, key);
+            break;
+        case 3:
+            cout << "Enter node index and key to decrypt Vigenere Cipher: ";
+            cin >> index >> key;
+            list.decryptVigenereCipher(index, key);
+            break;
+        case 4:
+            cout << "Enter node index and key for Vernam Cipher: ";
+            cin >> index >> key;
+            list.applyVernamCipher(index, key);
+            break;
+        case 5:
+            cout << "Enter node index and key to decrypt Vernam Cipher: ";
+            cin >> index >> key;
+            list.decryptVernamCipher(index, key);
+            break;
+        case 6:
+            list.display();
+            break;
+        case 7:
+            cout << "Exiting program." << endl;
+            return 0;
+        default:
+            cout << "Invalid choice, please try again." << endl;
+        }
+    }
 
-    list.decryptVernamCipher(1, secondKey);
-    list.display();
-    cout << endl;
-
-    list.decryptVigenereCipher(1,key);
-    list.display();
-	
+    return 0;
    
 
 
