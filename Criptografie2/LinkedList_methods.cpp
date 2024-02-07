@@ -17,7 +17,7 @@ void LinkedList::display() {
     Node* current = head;
     int index = 0;
     while (current != nullptr) {
-        cout << "Index: " << index << " - PlainText: " << current->planeText << endl;
+        cout << "Index: " << index << " - Node Info: " << current->planeText << endl;
         current = current->next;
         index++;
     }
